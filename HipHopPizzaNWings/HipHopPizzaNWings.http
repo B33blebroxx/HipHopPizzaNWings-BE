@@ -1,0 +1,6 @@
+@HipHopPizzaNWings_HostAddress = http://localhost:5125
+
+GET {{HipHopPizzaNWings_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
