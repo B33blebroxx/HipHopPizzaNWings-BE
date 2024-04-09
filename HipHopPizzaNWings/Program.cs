@@ -46,5 +46,7 @@ app.MapControllers();
 UsersAPI.Map(app);
 ItemsAPI.Map(app);
 OrdersAPI.Map(app);
+OrderItemsAPI.Map(app);
+
 
 app.Run();

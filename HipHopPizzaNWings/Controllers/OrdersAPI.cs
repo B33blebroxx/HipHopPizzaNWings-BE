@@ -43,7 +43,7 @@ namespace HipHopPizzaNWings.Controllers
               
                     db.Orders.Add(OrderBeingCreated);
                     db.SaveChanges();
-                    return Results.Created($"/newOrder.Id", newOrder);
+                    return Results.Ok("Order created");
             });
 
             //Delete an order
@@ -77,6 +77,8 @@ namespace HipHopPizzaNWings.Controllers
                 return Results.Ok("Order details successfully updated.");
 
             });
+
+
             
         }
     }

@@ -1,5 +1,4 @@
-﻿using HipHopPizzaNWings.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 namespace HipHopPizzaNWings.Controllers
 {
     public static class ItemsAPI
