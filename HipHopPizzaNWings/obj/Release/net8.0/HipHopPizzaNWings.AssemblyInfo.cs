@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HipHopPizzaNWings")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0517ae7c6baeb6f09ec8050d3fe2b86f8497c295")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b6f5dfb527271b040beb813caf6b6f33d321403")]
 [assembly: System.Reflection.AssemblyProductAttribute("HipHopPizzaNWings")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HipHopPizzaNWings")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

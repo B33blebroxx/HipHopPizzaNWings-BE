@@ -29,18 +29,21 @@ namespace HipHopPizzaNWings.Controllers
             });
 
             //Create a new order
-            app.MapPut("/orders/new", (HipHopPizzaNWingsDbContext db, Order newOrder) =>
+            app.MapPost("/orders/new", (HipHopPizzaNWingsDbContext db, CreateOrderDTO newOrder) =>
             {
-                try 
+                Order OrderBeingCreated = new()
                 {
-                    db.Add(newOrder);
+                    CustomerName = newOrder.CustomerName,
+                    PhoneNumber = newOrder.PhoneNumber,
+                    Email = newOrder.Email,
+                    OrderTypeId = newOrder.OrderTypeId,
+                    DateCreated = DateTime.Now,
+                    IsClosed = false,
+                };
+              
+                    db.Orders.Add(OrderBeingCreated);
                     db.SaveChanges();
                     return Results.Created($"/newOrder.Id", newOrder);
-                }
-                catch (DbUpdateException)
-                {
-                    return Results.BadRequest("Unable to save order to DB.");
-                }
             });
 
             //Delete an order
@@ -56,6 +59,8 @@ namespace HipHopPizzaNWings.Controllers
                 db.SaveChanges();
                 return Results.Ok("Order successfully deleted.");
             });
+
+            
         }
     }
 }
