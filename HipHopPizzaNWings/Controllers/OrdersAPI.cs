@@ -60,6 +60,23 @@ namespace HipHopPizzaNWings.Controllers
                 return Results.Ok("Order successfully deleted.");
             });
 
+            //Update order details
+            app.MapPut("/orders/update/{orderId}", (HipHopPizzaNWingsDbContext db, int orderId, UpdateOrderDTO updatedOrder) =>
+            {
+                var orderBeingUpdated = db.Orders.SingleOrDefault(o => o.Id == orderId);
+                if (orderBeingUpdated == null)
+                {
+                    return Results.NotFound("Can't find specified order.");
+                }
+
+                orderBeingUpdated.CustomerName = updatedOrder.CustomerName;
+                orderBeingUpdated.PhoneNumber = updatedOrder.PhoneNumber;
+                orderBeingUpdated.Email = updatedOrder.Email;
+                orderBeingUpdated.OrderTypeId = updatedOrder.OrderTypeId;
+                db.SaveChanges();
+                return Results.Ok("Order details successfully updated.");
+
+            });
             
         }
     }
