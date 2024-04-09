@@ -8,7 +8,12 @@ namespace HipHopPizzaNWings.Controllers
         {
             app.MapGet("/items", (HipHopPizzaNWingsDbContext db) =>
             {
-                return db.Items.Include(i => i.Order).ToList();
+                var items = db.Items.Include(i => i.Order).ToList();
+                if (items == null)
+                {
+                    return Results.NotFound("No items found.");
+                }
+                return Results.Ok(items);
             });
         }
     }
