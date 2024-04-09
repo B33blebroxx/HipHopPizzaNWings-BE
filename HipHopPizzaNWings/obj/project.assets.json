@@ -1198,11 +1198,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Owner\\workspace\\csharp\\HipHopPizzaNWings\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
+      "projectUniqueName": "C:\\Users\\Owner\\workspace\\csharp\\HHPW\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
       "projectName": "HipHopPizzaNWings",
-      "projectPath": "C:\\Users\\Owner\\workspace\\csharp\\HipHopPizzaNWings\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
+      "projectPath": "C:\\Users\\Owner\\workspace\\csharp\\HHPW\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Owner\\workspace\\csharp\\HipHopPizzaNWings\\HipHopPizzaNWings\\obj\\",
+      "outputPath": "C:\\Users\\Owner\\workspace\\csharp\\HHPW\\HipHopPizzaNWings\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

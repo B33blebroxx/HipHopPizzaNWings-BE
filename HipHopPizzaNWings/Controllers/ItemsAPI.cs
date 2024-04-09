@@ -1,6 +1,15 @@
-﻿namespace HipHopPizzaNWings.Controllers
+﻿using HipHopPizzaNWings.Models;
+using Microsoft.EntityFrameworkCore;
+namespace HipHopPizzaNWings.Controllers
 {
-    public class ItemsAPI
+    public static class ItemsAPI
     {
+        public static void Map(WebApplication app)
+        {
+            app.MapGet("/items", (HipHopPizzaNWingsDbContext db) =>
+            {
+                return db.Items.Include(i => i.Order).ToList();
+            });
+        }
     }
 }

@@ -43,4 +43,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+UsersAPI.Map(app);
+ItemsAPI.Map(app);
+OrdersAPI.Map(app);
+
 app.Run();

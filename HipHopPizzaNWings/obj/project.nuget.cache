@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3RDQ7Jg7wR8B0B3+rvqS7wJzCnQZ0McJX8Z9TCMKi0AAhSmthzlkHc9yVXq+vcldn7c+gsIc4JiA0azxaI5vrQ==",
+  "dgSpecHash": "yIIzT6ygrBJZWKHbXYmRrfCE56a+Low5k7ZNRVApyyzphd/GKNKN0r/EpHtptyeB3f21W3m+SCzaZgV6UHghYw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Owner\\workspace\\csharp\\HipHopPizzaNWings\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
+  "projectFilePath": "C:\\Users\\Owner\\workspace\\csharp\\HHPW\\HipHopPizzaNWings\\HipHopPizzaNWings.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Owner\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.0\\microsoft.entityframeworkcore.6.0.0.nupkg.sha512",
