@@ -20,6 +20,6 @@
                 return (Tip + Subtotal);
             }
         }
-        public ICollection<OrderItem>? Items { get; set; }
+        public List<OrderItem> Items { get; set; } = new List<OrderItem>();
     }
 }
