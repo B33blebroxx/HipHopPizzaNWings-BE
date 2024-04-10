@@ -78,6 +78,22 @@ namespace HipHopPizzaNWings.Controllers
 
             });
 
+            //Close an order
+            app.MapPut("/order/{orderId}", (HipHopPizzaNWingsDbContext db, int orderId, CloseOrderDTO closedOrder) =>
+            {
+                var orderToClose = db.Orders.SingleOrDefault(o => o.Id == orderId);
+                if (orderToClose == null)
+                {
+                    return Results.NotFound("Order not found");
+                }
+
+                orderToClose.DateClosed = DateTime.Now;
+                orderToClose.IsClosed = true;
+                orderToClose.Tip = closedOrder.Tip;
+                db.SaveChanges();
+                return Results.Ok("Order closed");
+            });
+
 
             
         }
