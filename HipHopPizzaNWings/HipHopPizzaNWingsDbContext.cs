@@ -47,7 +47,7 @@ using HipHopPizzaNWings.Models;
         modelBuilder.Entity<Order>().HasData(new Order[]
         {
             new Order { Id = 1, CustomerName = "Mick Foley", PhoneNumber = "323-416-5523", Email = "JLee@email.com", OrderTypeId = 1, DateCreated = new DateTime(2024,04,08), DateClosed = null, IsClosed = false},
-            new Order { Id = 2, CustomerName = "Stan Hansen", PhoneNumber = "323-512-0833", Email = "SHanson@email.com", OrderTypeId = 3, DateCreated = new DateTime(2024,04,03), DateClosed = new DateTime(2024,04,03), IsClosed = true, Subtotal = 23.00M, Tip = 5.00M },
+            new Order { Id = 2, CustomerName = "Stan Hansen", PhoneNumber = "323-512-0833", Email = "SHanson@email.com", OrderTypeId = 3, DateCreated = new DateTime(2024,04,03), DateClosed = new DateTime(2024,04,03), IsClosed = true, Tip = 5.00M },
             new Order { Id = 3, CustomerName = "Brody Lee", PhoneNumber = "323-723-9376", Email = "BrodyForever@email.com", OrderTypeId = 2, DateCreated = new DateTime(2024,04,07), DateClosed = null, IsClosed = false}
         });
     }
