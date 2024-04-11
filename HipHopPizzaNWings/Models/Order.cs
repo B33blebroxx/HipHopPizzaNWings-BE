@@ -11,9 +11,15 @@
         public int OrderTypeId { get; set; }
         public OrderType? OrderType { get; set; }
         public bool IsClosed { get; set; }
-        public decimal Subtotal { get; set; }
-        public decimal Tip { get; set; }
-        public decimal Total
+        public decimal? Subtotal
+        {
+            get
+            {
+                return Items.Sum(i => i.Price);
+            }
+        }
+        public decimal? Tip { get; set; }
+        public decimal? Total
         {
             get
             {
