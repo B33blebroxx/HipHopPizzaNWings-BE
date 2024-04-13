@@ -1,9 +1,9 @@
-﻿namespace HipHopPizzaNWings.Controllers
+﻿namespace HipHopPizzaNWings.Models
 {
     public class CloseOrderDTO
     {
         public DateTime DateClosed { get; set; }
-        public Boolean IsClosed { get; set; }
+        public bool IsClosed { get; set; }
         public decimal Tip { get; set; }
     }
 }
