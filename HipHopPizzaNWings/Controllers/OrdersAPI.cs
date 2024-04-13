@@ -17,15 +17,34 @@ namespace HipHopPizzaNWings.Controllers
                 return Results.Ok(orders);
             });
 
-            //Get single order and its items
+                   //Get single order details
             app.MapGet("/orders/{orderId}", (HipHopPizzaNWingsDbContext db, int orderId) =>
             {
-                var orderAndItems = db.Orders.Include(i => i.Items).ThenInclude(z => z.Item).FirstOrDefault(o => o.Id == orderId);
-                if (orderAndItems == null)
+                var order = db.Orders.Include(i => i.OrderType).FirstOrDefault(o => o.Id == orderId);
+                if (order == null)
                 {
                     return Results.NotFound("Order not found.");
                 }
-                return Results.Ok(orderAndItems);
+                return Results.Ok(order);
+            });
+
+            //Get order items
+            app.MapGet("/orders/{orderId}/items", (HipHopPizzaNWingsDbContext db, int orderId) =>
+            {
+                var orderItems = db.OrderItems.Where(oi => oi.Order.Id == orderId)
+                                 .Select(oi => new
+                                 {
+                                     OrderId = oi.Order.Id,
+                                     Name = oi.Item.Name,
+                                     OrderItemId = oi.Id,
+                                     Price = oi.Item.Price,
+                                     IsClosed = oi.Order.IsClosed
+                                 }).ToList();
+                if (orderItems == null)
+                {
+                    return Results.NotFound("No order items found.");
+                }
+                return Results.Ok(orderItems);
             });
 
             //Create a new order
