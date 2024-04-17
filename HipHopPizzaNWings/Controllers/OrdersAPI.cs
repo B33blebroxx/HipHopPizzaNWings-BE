@@ -38,7 +38,8 @@ namespace HipHopPizzaNWings.Controllers
                                      Name = oi.Item.Name,
                                      OrderItemId = oi.Id,
                                      Price = oi.Item.Price,
-                                     IsClosed = oi.Order.IsClosed
+                                     IsClosed = oi.Order.IsClosed,
+                                     SubTotal = oi.Order.Subtotal
                                  }).ToList();
                 if (orderItems == null)
                 {
@@ -123,7 +124,7 @@ namespace HipHopPizzaNWings.Controllers
             });
 
             //Get order Total
-            app.MapGet("/orderTotal/{id}", (HipHopPizzaNWingsDbContext db, int id) => 
+            app.MapGet("/order/{id}/total", (HipHopPizzaNWingsDbContext db, int id) => 
             {
                 var order = db.Orders
                          .Include(order => order.Items)
