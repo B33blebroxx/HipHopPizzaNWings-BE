@@ -4,6 +4,6 @@
     {
         public DateTime DateClosed { get; set; }
         public bool IsClosed { get; set; }
-        public decimal Tip { get; set; }
+        public decimal? Tip { get; set; }
     }
 }

@@ -68,16 +68,25 @@ namespace HipHopPizzaNWings.Controllers
             //Delete an order
             app.MapDelete("/orders/{orderId}", (HipHopPizzaNWingsDbContext db, int orderId) =>
             {
-                var orderToDelete = db.Orders.SingleOrDefault(o => o.Id == orderId);
-                if (orderToDelete == null)
-                {
-                    return Results.NotFound("No order found.");
-                }
+                var orderToDelete = db.Orders.Include(o => o.Items).FirstOrDefault(i => i.Id == orderId);
 
-                db.Orders.Remove(orderToDelete);
-                db.SaveChanges();
-                return Results.Ok("Order successfully deleted.");
+                if (orderToDelete != null)
+                {
+                    foreach (var item in orderToDelete.Items)
+                    {
+                        db.OrderItems.Remove(item);
+                    }
+
+                    db.Orders.Remove(orderToDelete);
+                    db.SaveChanges();
+                    return Results.Ok();
+                }
+                else
+                {
+                    return Results.NotFound();
+                }
             });
+
 
             //Update order details
             app.MapPut("/orders/update/{orderId}", (HipHopPizzaNWingsDbContext db, int orderId, UpdateOrderDTO updatedOrder) =>
@@ -113,8 +122,47 @@ namespace HipHopPizzaNWings.Controllers
                 return Results.Ok("Order closed");
             });
 
+            //Get order Total
+            app.MapGet("/orderTotal/{id}", (HipHopPizzaNWingsDbContext db, int id) => 
+            {
+                var order = db.Orders
+                         .Include(order => order.Items)
+                         .ThenInclude(orderItem => orderItem.Item)
+                         .SingleOrDefault(order => order.Id == id);
 
-            
+
+                return new OrderTotalDTO
+                {
+                    Total = order.Total,
+                    SubTotal = order.Subtotal,
+                    Tip = order.Tip,
+                };
+            });
+
+            //Get Revenue
+            app.MapGet("/revenue", (HipHopPizzaNWingsDbContext db) =>
+            {
+                var closedOrders = db.Orders
+                                 .Include(o => o.Items)
+                                 .ThenInclude(oi => oi.Item)
+                                 .Where(o => o.IsClosed)
+                                 .ToList();
+
+                if (closedOrders == null || !closedOrders.Any())
+                {
+                    return Results.NotFound("No closed orders.");
+                }
+
+                var revenue = new OrderTotalDTO
+                {
+                    SubTotal = closedOrders.Sum(o => o.Subtotal),
+                    Total = closedOrders.Sum(o => o.Total),
+                    Tip = closedOrders.Sum(o => o.Tip)
+                };
+
+                return Results.Ok(revenue);
+            });
+
         }
     }
 }
