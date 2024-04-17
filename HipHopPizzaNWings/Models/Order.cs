@@ -15,7 +15,7 @@
         {
             get
             {
-                return Items.Sum(i => i.Price);
+                return Items?.Sum(i => i.Price);
             }
         }
         public decimal? Tip { get; set; }
