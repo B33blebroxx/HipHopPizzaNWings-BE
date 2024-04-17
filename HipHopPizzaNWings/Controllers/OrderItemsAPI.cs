@@ -21,7 +21,7 @@ namespace HipHopPizzaNWings.Controllers
             });
 
             //Remove item from order
-            app.MapDelete("/order/removeItem", (HipHopPizzaNWingsDbContext db, int orderItemId) =>
+            app.MapDelete("/order/removeItem/{orderItemId}", (HipHopPizzaNWingsDbContext db, int orderItemId) =>
             { 
                 var orderItem = db.OrderItems.FirstOrDefault(oi => oi.Id == orderItemId);
                 if (orderItem == null)
