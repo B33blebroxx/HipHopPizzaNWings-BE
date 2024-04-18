@@ -131,13 +131,18 @@ namespace HipHopPizzaNWings.Controllers
                          .ThenInclude(orderItem => orderItem.Item)
                          .SingleOrDefault(order => order.Id == id);
 
-
-                return new OrderTotalDTO
+                if (order == null)
                 {
-                    Total = order.Total,
-                    SubTotal = order.Subtotal,
-                    Tip = order.Tip,
-                };
+                    return new OrderTotalDTO { Total = 0, SubTotal = 0, Tip = 0 };
+                }
+                
+                    return new OrderTotalDTO
+                    {
+                        Total = order.Total,
+                        SubTotal = order.Subtotal,
+                        Tip = order.Tip,
+                    };
+               
             });
 
             //Get Revenue
